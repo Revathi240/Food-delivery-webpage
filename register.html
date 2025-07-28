@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Slice Hut Registration page</title>
+  <script>
+    function validate() {
+      var f1 = document.forms['f1'];  // Reference the form by name
+
+      var name = f1.username.value;
+      if (name.length <= 0) {
+        alert("Please enter your name");
+        f1.username.focus();
+        return false;
+      }
+      if (name.length < 6) {
+        alert("Name should be more than 6 characters");
+        f1.username.focus();
+        return false;
+      }
+      if (name.length > 15) {
+        alert("Name should be less than 15 characters");
+        f1.username.focus();
+        return false;
+      }
+
+      var email = f1.email.value;
+      if (email.length <= 0) {
+        alert("Please enter your email");
+        f1.email.focus();
+        return false;
+      }
+      if (email.indexOf('@') <= 0 || email.indexOf('.') <= 0) {
+        alert("Please enter a valid email");
+        f1.email.focus();
+        return false;
+      }
+
+      var phno = f1.phno.value;
+      if (phno.length <= 0) {
+        alert("Please enter your phone number");
+        f1.phno.focus();
+        return false;
+      }
+      if (isNaN(phno)) {
+        alert("Phone number should be numeric");
+        f1.phno.focus();
+        return false;
+      }
+      if (phno.length != 10) {
+        alert("Phone number should be 10 digits");
+        f1.phno.focus();
+        return false;
+      }
+
+      var password = f1.password.value;
+      if (password.length <= 0) {
+        alert("Please enter your password");
+        f1.password.focus();
+        return false;
+      }
+      if (password.length < 6) {
+        alert("Password should be more than 6 characters");
+        f1.password.focus();
+        return false;
+      }
+      if (password.length > 10) {
+        alert("Password should be less than 10 characters");
+        f1.password.focus();
+        return false;
+      }
+
+      var cpassword = f1.cpassword.value;
+      if (cpassword.length <= 0) {
+        alert("Please enter your confirm password");
+        f1.cpassword.focus();
+        return false;
+      }
+      if (cpassword != password) {
+        alert("Password and confirm password should be same");
+        f1.cpassword.focus();
+        return false;
+      }
+
+      var addr = f1.address.value;
+      if (addr.length <= 0) {
+        alert("Please enter your address");
+        f1.address.focus();
+        return false;
+      }
+
+      alert("Registration successful");
+      return true;
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo">🍕 Slice Hut</div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="deals.html">Deals</a></li>
+          <li><a href="location.html">Locations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </nav>
+      <a href="order.html" class="order-btn">Order Now!</a>
+    </div>
+  </header>
+
+  <center>
+    <section id="register">
+      <h2>Register Now!</h2></br>
+      <form name="f1" class="registration-form" onsubmit="return validate()">
+        <input type="text" name="username" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="phno" placeholder="Your Phone Number" required />
+        <input type="password" name="password" placeholder="Create Password" required />
+        <input type="password" name="cpassword" placeholder="Confirm Password" required />
+        <input type="text" name="address" placeholder="Your Address" required />
+        <button type="submit">Register</button>
+      </form>
+    </section>
+  
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Pizza Hut. All rights reserved.</p>
+    </div>
+  </footer>
+  </center>
+</body>
+</html>

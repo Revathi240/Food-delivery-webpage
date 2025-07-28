@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slice Hut Landing Page</title>
+    <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+ 
+    .order-box {
+      background-color: #2b2b2b;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #f00303;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff0000;
+      font-family: 'Times New Roman', Times, serif;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e60000;
+      box-shadow: 0 0 10px#ffff;
+    }
+
+    .summary {
+      margin-top: 20px;
+      background-color: #333;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+        <header class="header">
+        <div class="container">
+          <div class="logo">🍕 Slice Hut</div>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="deals.html">Deals</a></li>
+              <li><a href="location.html">Locations</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="register.html">Register</a></li>
+            </ul>
+          </nav>
+          <a href="order.html" class="order-btn">Order Now!</a>
+        </div>
+      </header>
+
+  <div class="order-box">
+    <h2>Order Your Food</h2>
+    
+    <label for="foodItem">Choose Food:</label>
+    <select id="foodItem">
+      <option value="Pizza" data-price="319">Pepperoni Pizza - ₹319</option>
+      <option value="Burger" data-price="149">Cheese Burger - ₹149</option>
+      <option value="Pizza" data-price="239">Veggie Supreme - ₹239</option>
+      <option value="Pasta" data-price="199">Masala Pasta - ₹199</option>
+      <option value="French Fries" data-price="89">French Fries - ₹89</option>
+      <option value="Sandwich" data-price="129">Egg Sandwich - ₹129</option>
+      <option value="Chicken" data-price="169">Chicken Lollipop- ₹169</option>
+      <option value="Bread" data-price="99">Garlic Bread - ₹99</option>
+      <option value="Chicken" data-price="159">Chicken Shawarma - ₹139</option>
+      <option value="Soup" data-price="139">Mutton Soup - ₹139</option>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" min="1" value="1">
+
+    <button onclick="placeOrder()">Place Order</button>
+
+    <div class="summary" id="orderSummary" style="display:none;"></div>
+  </div>
+
+  <script>
+    function placeOrder() {
+      const foodSelect = document.getElementById("foodItem");
+      const selectedOption = foodSelect.options[foodSelect.selectedIndex];
+      const food = selectedOption.value;
+      const price = parseInt(selectedOption.getAttribute("data-price"));
+      const quantity = parseInt(document.getElementById("quantity").value);
+      const total = price * quantity;
+
+      const summaryBox = document.getElementById("orderSummary");
+      summaryBox.style.display = "block";
+      summaryBox.innerHTML = `
+        <h3>Order Summary</h3>
+        <p><strong>Food:</strong> ${food}</p>
+        <p><strong>Quantity:</strong> ${quantity}</p>
+        <p><strong>Total Price:</strong> ₹${total}</p>
+        <p>Thank you for ordering with us!</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
